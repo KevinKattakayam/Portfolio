@@ -19,7 +19,7 @@ export const site = {
   email: "kevinbastin369@gmail.com",
   availability: {
     open: true,
-    label: "Open to internships and full-time roles from 2027",
+    label: "Open to internships and full-time roles",
   },
   socials: [
     { label: "GitHub", href: "https://github.com/KevinKattakayam" },
