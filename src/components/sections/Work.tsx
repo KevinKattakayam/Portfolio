@@ -47,7 +47,7 @@ export function Work() {
           intro={
             <p>
               {projects.length} projects with full case studies, from agent pipelines and a Kafka
-              backbone to a GPU kernel and a research preprint. Each case study links to its code.
+              backbone to a GPU kernel and computer vision. Each case study links to its code.
             </p>
           }
         />

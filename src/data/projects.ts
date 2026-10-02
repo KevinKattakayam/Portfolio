@@ -299,7 +299,7 @@ const allProjects: Project[] = [
     github: "https://github.com/KevinKattakayam/schamroth",
     paper: "https://ieeexplore.ieee.org/document/11469562",
     art: "scan",
-    size: "small",
+    size: "wide",
     metrics: [
       { value: "IEEE", label: "published 2026" },
       { value: "5", label: "clinical risk levels" },
@@ -669,47 +669,6 @@ const allProjects: Project[] = [
     },
   },
   {
-    slug: "metis-research-mentor",
-    title: "METIS: an AI research mentor",
-    summary:
-      "A stage-aware assistant that guides students from idea to paper. LLM judges preferred it to Claude Sonnet 4.5 in 71% of 90 prompts.",
-    category: "Research",
-    role: "Research project (preprint)",
-    tech: ["Python", "LLMs", "Tool use", "Retrieval", "LLM-as-a-judge"],
-    github: "https://github.com/KevinKattakayam/research_mentor",
-    art: "stages",
-    size: "wide",
-    metrics: [
-      { value: "71%", label: "preferred over Claude Sonnet 4.5" },
-      { value: "54%", label: "preferred over GPT-5" },
-      { value: "90", label: "single-turn prompts judged" },
-    ],
-    caseStudy: {
-      problem:
-        "Many students lack access to expert research mentorship. METIS asks whether an AI mentor can move an undergraduate from an idea to a paper.",
-      process: [
-        {
-          title: "Build",
-          body: "A tool-augmented, stage-aware assistant with literature search, curated guidelines, methodology checks and memory.",
-        },
-        {
-          title: "Evaluate",
-          body: "Compared with GPT-5 and Claude Sonnet 4.5 across six writing stages, using pairwise LLM-judge preferences, student-persona rubrics, short multi-turn tutoring sessions and evidence and compliance checks.",
-        },
-        {
-          title: "Make it reproducible",
-          body: "Scripts for single-turn stages A to F, student judge scores and multi-turn runs, with the raw logs and analysis reports used in the preprint.",
-        },
-      ],
-      solution: [
-        "Stage-aware routing and grounding: gains concentrate in the document-grounded stages (D to F).",
-        "Failure modes are reported openly: premature tool routing, shallow grounding and occasional stage misclassification.",
-      ],
-      result:
-        "On 90 single-turn prompts, LLM judges preferred METIS to Claude Sonnet 4.5 in 71% of cases and to GPT-5 in 54%. In multi-turn sessions it produced slightly higher final quality than GPT-5. Code and evaluation artifacts are public; the work is described as a preprint.",
-    },
-  },
-  {
     slug: "battery-guard",
     title: "Battery Guard",
     summary:
@@ -788,7 +747,6 @@ const ORDER = [
   "fact-verifier",
   "collegefind",
   "schamroth-detection",
-  "metis-research-mentor",
   "patentdoc-copilot",
   "devsync",
   "battery-guard",

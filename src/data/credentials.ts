@@ -24,11 +24,9 @@ export const certifications = [
 ];
 
 /** More research. Wording stays exactly as accurate as each repo's README. */
-export const research = [
-  {
-    title: "METIS: Mentoring Engine for Thoughtful Inquiry & Solutions",
-    status: "Preprint",
-    detail: "Code and evaluation artifacts",
-    href: "https://github.com/KevinKattakayam/research_mentor",
-  },
-];
+export const research: Array<{
+  title: string;
+  status: string;
+  detail: string;
+  href: string;
+}> = [];

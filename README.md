@@ -92,7 +92,7 @@ To keep the first load light: the 3D field loads only after a mouse move (or 3 s
 
 ## Project facts
 
-Every number and claim in the case studies comes from your resumes or the project READMEs (checked line by line). Years are left off projects where the date wasn't known. Research is labelled exactly as the repo says: METIS as a "preprint". Change the wording when you have acceptance or publication details.
+Every number and claim in the case studies comes from your resumes or the project READMEs (checked line by line). Years are left off projects where the date wasn't known.
 
 ## Extras
 

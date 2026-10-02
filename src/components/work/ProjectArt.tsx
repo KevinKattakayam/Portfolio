@@ -537,7 +537,7 @@ function Gauge({ rand }: R) {
   );
 }
 
-/* METIS: six writing stages A to F; the document-grounded stages D to F are highlighted. */
+/* Stages visualization A to F */
 function Stages() {
   const letters = ["A", "B", "C", "D", "E", "F"];
   return (

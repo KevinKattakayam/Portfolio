@@ -17,8 +17,7 @@ export function Credentials() {
           title="Proof, not adjectives"
           intro={
             <p className="text-bg/70">
-              An IEEE paper, a research preprint, Amazon&apos;s ML school and ten professional
-              certifications.
+              An IEEE paper, Amazon&apos;s ML school and ten professional certifications.
             </p>
           }
         />
@@ -58,31 +57,33 @@ export function Credentials() {
         </div>
       </div>
 
-      <div className="container-grid mt-4">
-        <ul className={research.length > 1 ? "grid gap-4 md:grid-cols-2" : "grid gap-4"}>
-          {research.map((r) => (
-            <li key={r.href}>
-              <a
-                href={r.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border-bg/15 hover:border-bg/40 flex h-full items-start justify-between gap-6 rounded-[var(--radius-card)] border p-7 transition-colors"
-              >
-                <span>
-                  <span className="text-step--1 text-bg/70">
-                    {r.status}, {r.detail.toLowerCase()}
+      {research.length > 0 && (
+        <div className="container-grid mt-4">
+          <ul className={research.length > 1 ? "grid gap-4 md:grid-cols-2" : "grid gap-4"}>
+            {research.map((r) => (
+              <li key={r.href}>
+                <a
+                  href={r.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group border-bg/15 hover:border-bg/40 flex h-full items-start justify-between gap-6 rounded-[var(--radius-card)] border p-7 transition-colors"
+                >
+                  <span>
+                    <span className="text-step--1 text-bg/70">
+                      {r.status}, {r.detail.toLowerCase()}
+                    </span>
+                    <span className="heading text-step-2 mt-2 block">{r.title}</span>
                   </span>
-                  <span className="heading text-step-2 mt-2 block">{r.title}</span>
-                </span>
-                <ArrowUpRight
-                  className="mt-1 size-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  aria-hidden
-                />
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+                  <ArrowUpRight
+                    className="mt-1 size-5 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    aria-hidden
+                  />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <Marquee label="Certifications" duration={60} className="mt-14">
         {certifications.map((c) => (
