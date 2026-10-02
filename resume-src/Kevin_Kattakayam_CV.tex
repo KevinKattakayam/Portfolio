@@ -1,0 +1,173 @@
+%========== MASTER CV - 2 pages ==========
+% Compile: pdflatex Kevin_Kattakayam_CV.tex   (run twice)
+% Requires kevinresume.sty in the same folder.
+%
+% This is the complete record. Use it for academic applications, referrals,
+% and anywhere a longer document is welcome. For company applications send
+% the matching one-page resume variant instead.
+%
+% NOTE: deliberately has NO page footer. The old CV's "Kevin Kattakayam -
+% Page 1" footer was being glued onto the next heading by PDF text
+% extractors, producing "Page 1GhostWorker".
+%
+% CERTIFICATIONS ARE TIERED ON PURPOSE. Vendor and industry credentials sit under
+% "Professional Certifications"; MOOCs and skill badges sit under
+% "Courses & Credentials". A reviewer reads the tier label before the
+% items, so the strong ones are not diluted by the rest.
+%=========================================
+\documentclass[a4paper,10pt]{article}
+\usepackage{kevinresume}
+\hypersetup{pdftitle={Kevin Kattakayam - CV},pdfsubject={Curriculum Vitae}}
+\roomy
+
+\begin{document}
+
+\makeheader{B.Tech Computer Science and Engineering (Artificial Intelligence \& Machine Learning)}
+
+\section{Professional Summary}
+{\small
+Final-year B.Tech CSE (AI \& ML) student working across applied generative AI and backend systems engineering: multi-agent LLM pipelines
+with LangGraph and CrewAI, RAG over real document corpora, self-supervised video models in PyTorch, and a Go/Rust streaming observability
+pipeline on Kafka, ClickHouse, Helm, and Terraform. IEEE-published, completed Amazon ML Summer School 2026, and holder of ten
+professional certifications across Microsoft, Snowflake, Salesforce, Oracle, Redis, and Google.}
+
+\section{Education}
+
+\entry{Karunya Institute of Technology and Sciences}{2023 -- 2027 (Expected)}
+\subentry{B.Tech, Computer Science and Engineering (AI \& ML) -- CGPA: 8.39/10}{Coimbatore, India}
+\gap
+\eduschool
+
+\section{Professional Experience}
+
+\entry{TheAiSignal -- Full Stack AI Developer Intern}{May 2026 -- Jul 2026}
+\begin{points}
+  \item Engineered AI-powered features spanning a React frontend, FastAPI backend, and REST API layer for production applications.
+  \item Maintained deployment pipelines and release workflows across multiple projects using GitHub and Cloudflare.
+\end{points}
+\gap
+
+\entry{Karunya Computer Technology Centre -- Generative AI Trainee}{Dec 2024 -- Present}
+\begin{points}
+  \item Build LLM-powered applications with a team across multiple generative AI projects using LangChain, ChromaDB, and FAISS.
+  \item Apply retrieval-augmented generation, prompt engineering, and OCR-based extraction to document processing workflows.
+\end{points}
+\gap
+
+\entry{YoungMinds Technology Solutions Pvt Ltd -- Generative AI Intern}{May 2025 -- Jul 2025}
+\begin{points}
+  \item Developed generative AI applications and automation tools in Python against LLM and REST APIs.
+\end{points}
+\gap
+
+\entry{Karunya Innovation and Design Studio (KIDS) -- Generative AI Intern}{May 2025 -- Jun 2025}
+\begin{points}
+  \item Built a multi-agent patent drafting and verification system in CrewAI as the internship's hands-on project, following training across generative AI concepts (detailed under Projects: PatentDoc Co-Pilot).
+\end{points}
+\gap
+
+\entry{Octanet Services Pvt Ltd -- Web Development Intern}{May 2024 -- Jun 2024}
+\begin{points}
+  \item Built responsive web applications using HTML, CSS, and JavaScript following mobile-first design principles.
+\end{points}
+
+\section{Selected Projects}
+
+\privateproject{Distributed Observability Pipeline (Datadog-style)}{datadog}
+\stack{Go, Rust, Apache Kafka, ClickHouse, Prometheus, Grafana, Kubernetes, Terraform}
+\begin{points}
+  \item Built an end-to-end metrics pipeline: a Go ingestor (Gin HTTP, with gRPC/protobuf definitions) publishing validated metrics to 6-partition Kafka topics with a dead-letter queue, consumed by a Rust/tokio processor running EWMA and rolling Z-score anomaly detection.
+  \item Ensured at-least-once delivery with no silent data loss by committing Kafka offsets only after successful ClickHouse writes, and protected the consumer loop with a circuit breaker (opens after 5 failures, exponential backoff to 60s) so backend degradation bounds lag instead of stalling ingestion. Storage is two-tier: Prometheus (15-day hot) and ClickHouse MergeTree (monthly partitions, 1-year TTL, hourly rollups).
+  \item Built the operational layer: per-tenant token-bucket rate limiting, W3C Trace Context propagation to Tempo and Jaeger, multi-window SLO burn-rate alerts on the Google SRE model, a 12-component Helm chart with HPAs and PDBs, and a Terraform blueprint for AWS EKS. Backed by 53 unit tests (41 Go, 12 Rust), 25 integration tests, and a k6 load-test script for the 14-container stack.
+\end{points}
+\gap
+
+\privateproject{PharmaTrace -- Pharmaceutical Verification Platform}{pharma_trace}
+\stack{Python, FastAPI, LangGraph, Groq/Llama 3.3 70B, Whisper, React 19 PWA, Supabase PostGIS}
+\begin{points}
+  \item Built a 6-agent LangGraph verification pipeline (barcode, FDA lookup, recall, interaction, safety, report) over OpenFDA, RxNav, and Indian CDSCO registries, parallelizing agent lookups with \texttt{asyncio.gather} to cut end-to-end latency. Replaced naive report counts with NLM RxNorm clinical mapping, FAERS signal strength, and severity-sorted warnings.
+  \item Enforced clinical safety with strict Pydantic schemas and a field-validator ``jargon firewall'' structurally blocking hallucinated medical terminology, and injected patient age, weight, and renal function into prompts to trigger dosage warnings.
+  \item Shipped an offline-first PWA: in-browser Tesseract OCR for expiry extraction, IndexedDB caching with a Background Sync outbox, and Whisper-based vernacular voice in Malayalam, Hindi, Tamil, and English; logged every verification to a SHA-256 hash-chained audit chain; ships with Railway and Vercel deployment configs.
+\end{points}
+\gap
+
+\privateproject{DevSync -- Collaborative Developer Workspace}{devsync}
+\stack{Node.js, Express, TypeScript, Next.js, React, PostgreSQL, Prisma, Socket.io}
+\begin{points}
+  \item Built a real-time collaboration platform with JWT auth, role-based access control, Socket.io live co-editing, and Kanban task management.
+  \item Designed the PostgreSQL schema and data access layer with Prisma, exposing a REST API with Zod validation, centralized error handling, and Jest/Supertest integration suites across auth, RBAC, and task workflows.
+\end{points}
+\gap
+
+\privateproject{PatentDoc Co-Pilot -- IPO-Compliant Patent Drafting}{Patent_Doc_Copilot}
+\stack{Python, CrewAI, LLMs, OpenRouter, Streamlit, Docker}
+\begin{points}
+  \item Built a one-click generator producing all 9 IPO-compliant patent sections with auto-generated block, flow, and sequence diagrams.
+  \item Orchestrated a 5-agent CrewAI verification and prior-art pipeline covering claim writing, drawing description, format validation, and quality review, exporting a full filing package (Forms 1, 3, 5) as PDF and DOCX from a containerized Streamlit app.
+\end{points}
+\gap
+
+\privateproject{Schamroth Window Detection -- Digital Clubbing Screening}{schamroth}
+\stack{Python, MediaPipe, OpenCV, CLAHE, Streamlit \enspace (basis of the IEEE publication)}
+\begin{points}
+  \item Built a screening pipeline for digital clubbing using MediaPipe hand-landmark localization of opposing index fingertips, with a center-based fallback for close-up frames and pre-processing image-quality gates.
+  \item Designed a gap-presence score from bright/dark pixel ratios, contrast, and symmetry, mapped to 5 clinical risk levels with quality-weighted confidence; evaluated with accuracy, sensitivity, specificity, F1, and a confusion matrix on a 65-image test set.
+\end{points}
+\gap
+
+\project{V-JEPA Video Representation Learning}{finetunevjpea}
+\stack{PyTorch, V-JEPA, CUDA}
+\begin{points}
+  \item Adapted pretrained V-JEPA self-supervised representations for downstream video classification using attentive probes on UCF101.
+  \item Ran experiments over temporal sampling strategies, probe configurations, and batch sizing under constrained GPU memory.
+\end{points}
+\gap
+
+\project{CollegeFind -- College Discovery Platform}{collegefind}
+\stack{Next.js 16, TypeScript, Tailwind CSS, NextAuth, Prisma, Neon PostgreSQL \enspace|\enspace Live: \live{college-discovery-zeta.vercel.app}}
+\begin{points}
+  \item Shipped a live platform covering 200+ colleges with debounced search, multi-facet filters, shareable URL state, and skeleton loaders.
+  \item Built side-by-side comparison across 11+ metrics, an exam-rank admission predictor, saved comparisons, and a community Q\&A thread with optimistic UI, deployed as a Vercel frontend proxying to a Render backend over serverless Neon Postgres.
+\end{points}
+\gap
+
+\project{NexusBank -- Online Banking Simulation}{online_bank_simulation}
+\stack{Node.js, Express 5, MongoDB, Mongoose, bcrypt, express-session}
+\begin{points}
+  \item Built a banking API with bcrypt-hashed PIN authentication, MongoDB-backed sessions, balance-validated transfers, beneficiaries, and compound-indexed paginated history, plus rule-based fraud detection (amount, velocity, odd-hours, daily-limit) with a weighted 0--100 risk score and aggregation-pipeline spend analytics.
+\end{points}
+
+\section{Additional Projects}
+\begin{points}
+  \item \textbf{PDF OCR \& Structure Extraction Pipeline} (\repo{pdf-ocr}) -- Python, Pydantic. Validation, OCR, structure extraction with fallbacks, table normalization, canonical JSON/Markdown, RAG chunking, batch CLI.
+  \item \textbf{Invoice OCR to Excel} (\repo{bill_excel}) -- PaddleOCR PP-Structure, OpenPyXL. Extracts invoice fields and line-item tables from images/PDFs, reconstructs rows/columns, exports Excel and JSON.
+  \item \textbf{AI Research Co-Scientist} (LangChain, ChromaDB, team project) -- GenAI module for literature review and hypothesis generation.
+  \item \textbf{Research Paper Navigator} (Sentence Transformers, FAISS, Ollama) -- semantic paper search with local LLM summaries.
+  \item \textbf{Karunya Admission Guide Bot} (LangChain, FAISS) -- RAG chatbot answering campus and admission queries from institutional documents.
+  \item \textbf{GhostWorker} (FastAPI, LangGraph, Next.js) -- multi-agent bias detection and legal appeal generation across 5+ jurisdictions.
+\end{points}
+
+\section{Technical Skills}
+{\small
+\textbf{Programming Languages:} Python, Go, Rust, TypeScript, JavaScript, Java, SQL\\[2pt]
+\textbf{AI \& Machine Learning:} Large Language Models, Agentic AI, Multi-Agent Orchestration, Retrieval-Augmented Generation (RAG), Prompt Engineering, NLP, Computer Vision, Self-Supervised Learning\\[2pt]
+\textbf{AI Frameworks \& Libraries:} LangGraph, LangChain, CrewAI, PyTorch, Hugging Face Transformers, MediaPipe, OpenCV, PaddleOCR, Tesseract, Sentence Transformers, LLM APIs, Pandas, NumPy\\[2pt]
+\textbf{Backend \& Web:} FastAPI, Node.js, Express, Gin, gRPC, REST APIs, React 19, Next.js (App Router), Tailwind CSS, Prisma, Mongoose, Socket.io, NextAuth, JWT, RBAC, Streamlit, PWA/Workbox\\[2pt]
+\textbf{Distributed Systems:} Apache Kafka (KRaft), Avro \& Schema Registry, Kafka Connect, at-least-once delivery, circuit breakers, per-tenant rate limiting, multi-tenancy\\[2pt]
+\textbf{Databases \& Stores:} PostgreSQL, ClickHouse, MongoDB, MySQL, Redis, Neon, Supabase/PostGIS, ChromaDB, FAISS, Snowflake\\[2pt]
+\textbf{Infrastructure \& Observability:} Docker, Kubernetes, Helm, Terraform, Prometheus, Grafana, OpenTelemetry, Jaeger, CI/CD, Cloudflare, Vercel, Azure, CUDA\\[2pt]
+\textbf{Testing, Tooling \& Foundations:} Jest, Supertest, pytest, k6, Zod, Pydantic, Git, Postman, Jupyter; Data Structures \& Algorithms, OOD, System Design, Concurrency, SLOs \& Error Budgets}
+
+\section{Publications \& Achievements}
+\begin{points}
+  \item \ieeepaper
+  \item \textbf{Completed Amazon ML Summer School 2026} (Amazon)
+  \item \textbf{McKinsey Forward} (McKinsey \& Company)
+\end{points}
+
+\section{Certifications}
+{\small
+\textbf{Professional Certifications:} Microsoft Certified: Azure AI Engineer Associate (AI-102) $\cdot$ Microsoft Certified: SQL AI Developer Associate (DP-800) $\cdot$ SnowPro Associate: Platform (Snowflake) $\cdot$ Agentforce Specialist (Salesforce) $\cdot$ Oracle Agentic AI Foundations Associate $\cdot$ Oracle OCI AI Foundations Associate $\cdot$ Redis Associate Developer $\cdot$ Certified LLM Security Professional (CLLMSP) $\cdot$ Google Cybersecurity Professional $\cdot$ Python Web Developer (ICT Academy -- Infosys)\\[3pt]
+\textbf{Courses \& Credentials:} Google AI Essentials $\cdot$ Python for Data Science (IBM) $\cdot$ Deep Learning Fundamentals (Lightning AI) $\cdot$ Data Science for Engineers (NPTEL) $\cdot$ Google Cloud Computing Foundations $\cdot$ Responsive Web Design (freeCodeCamp) $\cdot$ Copado AI Certified $\cdot$ Microsoft Applied Skills $\cdot$ Google Cloud Skill Badges}
+
+\end{document}

@@ -1,0 +1,105 @@
+%========== AI / ML (Generative AI) ENGINEER - 1 page ==========
+% Compile: pdflatex Kevin_Kattakayam_Resume_AI_ML.tex   (run twice)
+% Requires kevinresume.sty in the same folder.
+%
+% Certifications on this variant are the agentic-AI / LLM ones only.
+% The web, cyber and MOOC credentials are deliberately left in the CV.
+%===============================================================
+\documentclass[a4paper,10pt]{article}
+\usepackage{kevinresume}
+\tight
+
+\begin{document}
+
+\makeheader{AI/ML Engineer \enspace|\enspace Generative AI, Multi-Agent Systems, RAG \enspace|\enspace Internship \& Full-Time \enspace|\enspace Graduating 2027}
+
+\section{Education}
+\entry{Karunya Institute of Technology and Sciences}{2023 -- 2027 (Expected)}
+\subentry{B.Tech, Computer Science and Engineering (AI \& ML) -- CGPA: 8.39/10}{Coimbatore, India}
+\eduschool
+
+\section{Experience}
+
+\entry{TheAiSignal -- Full Stack AI Developer Intern}{May 2026 -- Jul 2026}
+\begin{points}
+  \item Engineered AI-powered features across a React frontend, FastAPI backend, and REST API layer in production.
+  \item Maintained deployment pipelines and release workflows across multiple projects using GitHub and Cloudflare.
+\end{points}
+\gap
+
+\entry{Karunya Computer Technology Centre -- Generative AI Trainee}{Dec 2024 -- Present}
+\begin{points}
+  \item Build LLM-powered applications with a team across multiple generative AI projects using LangChain, ChromaDB, and FAISS.
+  \item Apply retrieval-augmented generation, prompt engineering, and OCR-based extraction to document processing workflows.
+\end{points}
+\gap
+
+\entry{YoungMinds Technology Solutions Pvt Ltd -- Generative AI Intern}{May 2025 -- Jul 2025}
+\begin{points}
+  \item Developed generative AI applications and automation tools in Python against LLM and REST APIs.
+\end{points}
+\gap
+
+\entry{Karunya Innovation and Design Studio (KIDS) -- Generative AI Intern}{May 2025 -- Jun 2025}
+\begin{points}
+  \item Built a multi-agent patent drafting and verification system in CrewAI with 5 agents for claim writing, prior-art search, and IPO compliance.
+  \item Generated all 9 IPO-compliant sections with auto-generated diagrams, exporting a filing package (Forms 1, 3, 5) as PDF and DOCX.
+\end{points}
+\gap
+
+\entry{Octanet Services Pvt Ltd -- Web Development Intern}{May 2024 -- Jun 2024}
+\begin{points}
+  \item Built responsive web applications using HTML, CSS, and JavaScript following mobile-first design principles.
+\end{points}
+
+\section{Projects}
+
+\privateproject{PharmaTrace -- Pharmaceutical Verification Platform}{pharma_trace}
+\stack{Python, FastAPI, LangGraph, Groq/Llama 3.3 70B, React 19 PWA, Supabase PostGIS}
+\begin{points}
+  \item Built a 6-agent LangGraph pipeline across 3 drug registries (OpenFDA, RxNav, CDSCO), parallelizing lookups with \texttt{asyncio.gather}.
+  \item Enforced strict Pydantic schemas and a field-validator ``jargon firewall'' against hallucinated terminology, with a SHA-256 audit chain; shipped an offline-first PWA with OCR and four-language voice.
+\end{points}
+\gap
+
+\project{Document OCR \& Structure Extraction Pipeline}{pdf-ocr}
+\stack{Python, OCR, Pydantic, pytest}
+\begin{points}
+  \item Built a production-oriented PDF ingestion pipeline: file validation, OCR for scanned documents, structure extraction with fallbacks, table normalization, and canonical JSON plus Markdown output.
+  \item Enforced Pydantic-validated schemas and added RAG-friendly chunk optimization and CLI batch processing with per-document failure reports.
+\end{points}
+\gap
+
+\project{V-JEPA Video Representation Learning}{finetunevjpea}
+\stack{PyTorch, V-JEPA, CUDA}
+\begin{points}
+  \item Adapted pretrained V-JEPA self-supervised representations for video classification using attentive probes on UCF101.
+  \item Ran experiments over temporal sampling and probe configurations under constrained GPU memory.
+\end{points}
+\gap
+
+\privateproject{Schamroth Window Detection -- Digital Clubbing Screening}{schamroth}
+\stack{Python, MediaPipe, OpenCV, CLAHE \enspace (basis of the IEEE publication)}
+\begin{points}
+  \item Built a computer-vision screening pipeline mapping a gap-presence score to 5 clinical risk levels, evaluated with accuracy, sensitivity, specificity, F1, and a confusion matrix on a 65-image test set.
+\end{points}
+
+\section{Technical Skills}
+{\small
+\textbf{AI \& ML:} LLMs, LLM APIs, Agentic AI, Multi-Agent Systems, RAG, Embeddings, Prompt Engineering, Structured Outputs, NLP\\
+\textbf{AI Frameworks:} LangGraph, LangChain, CrewAI, PyTorch, Hugging Face Transformers, Sentence Transformers\\
+\textbf{Computer Vision \& OCR:} Video Classification, Self-Supervised Learning, MediaPipe, OpenCV, PaddleOCR, Tesseract\\
+\textbf{Languages \& Backend:} Python, JavaScript, TypeScript, Java, SQL, FastAPI, Streamlit, REST APIs, Pydantic\\
+\textbf{Data \& Infra:} ChromaDB, FAISS, PostgreSQL, Supabase/PostGIS, Redis, Snowflake, Docker, Git, CI/CD, Cloudflare, Azure}
+
+\section{Achievements}
+\begin{points}
+  \item \ieeepaper
+  \item \textbf{Completed Amazon ML Summer School 2026} (Amazon)
+\end{points}
+
+\section{Certifications}
+{\small
+Azure AI Engineer Associate, AI-102 (Microsoft) $\cdot$ SQL AI Developer Associate, DP-800 (Microsoft) $\cdot$ Agentforce Specialist (Salesforce) $\cdot$ LLM Security Professional, CLLMSP $\cdot$ SnowPro Associate: Platform (Snowflake) $\cdot$ Oracle Agentic AI Foundations Associate $\cdot$ Oracle OCI AI Foundations Associate}
+
+\end{document}

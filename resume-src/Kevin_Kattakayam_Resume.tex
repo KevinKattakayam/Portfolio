@@ -1,0 +1,118 @@
+%========== COMMON / GENERAL-PURPOSE RESUME - 1 page ==========
+% Compile: pdflatex Kevin_Kattakayam_Resume.tex   (run twice)
+% Requires kevinresume.sty in the same folder.
+%
+% HOW TO RETARGET THIS RESUME (30 seconds):
+%   Edit \roletitle below. Examples:
+%     AI/ML Engineer  |  Backend Engineer  |  Full Stack Engineer
+%   Then reorder the FIRST 2-3 items on each Technical Skills line so the
+%   ones the job asks for come first. Nothing else needs to change.
+%
+% CERTIFICATIONS POLICY (applied across every variant):
+%   Only vendor and industry credentials appear on a one-pager.
+%   MOOCs and skill badges live in the CV only - listing them here
+%   would dilute AI-102 and DP-800, which are the ones that carry weight.
+%
+% STILL TO FILL - two things only:
+%   [1] \kconf in kevinresume.sty - the exact IEEE conference name
+%   [2] Any hard number you can verify (throughput, p99, coverage %)
+%==============================================================
+\documentclass[a4paper,10pt]{article}
+\usepackage{kevinresume}
+\tight
+
+% >>> CHANGE THIS ONE LINE PER APPLICATION <<<
+\newcommand{\roletitle}{Software Engineer \enspace|\enspace AI, Backend \& Full Stack \enspace|\enspace Internship \& Full-Time \enspace|\enspace Graduating 2027}
+
+\begin{document}
+
+\makeheader{\roletitle}
+
+\section{Education}
+\entry{Karunya Institute of Technology and Sciences}{2023 -- 2027 (Expected)}
+\subentry{B.Tech, Computer Science and Engineering (AI \& ML) -- CGPA: 8.39/10}{Coimbatore, India}
+\eduschool
+
+\section{Experience}
+
+\entry{TheAiSignal -- Full Stack AI Developer Intern}{May 2026 -- Jul 2026}
+\begin{points}
+  \item Engineered AI-powered features across a React frontend, FastAPI backend, and REST API layer for production applications.
+  \item Maintained deployment pipelines and release workflows across multiple projects using GitHub and Cloudflare.
+\end{points}
+\gap
+
+\entry{Karunya Computer Technology Centre -- Generative AI Trainee}{Dec 2024 -- Present}
+\begin{points}
+  \item Build LLM-powered applications with a team across multiple generative AI projects using LangChain, ChromaDB, and FAISS.
+  \item Apply retrieval-augmented generation, prompt engineering, and OCR-based extraction to document processing workflows.
+\end{points}
+\gap
+
+\entry{YoungMinds Technology Solutions Pvt Ltd -- Generative AI Intern}{May 2025 -- Jul 2025}
+\begin{points}
+  \item Developed generative AI applications and automation tools in Python against LLM and REST APIs.
+\end{points}
+\gap
+
+\entry{Karunya Innovation and Design Studio (KIDS) -- Generative AI Intern}{May 2025 -- Jun 2025}
+\begin{points}
+  \item Built a multi-agent patent drafting and verification system in CrewAI, orchestrating 5 agents across claim writing, prior-art search, and IPO compliance checking.
+  \item Generated all 9 IPO-compliant sections with auto-generated diagrams, exporting a filing package (Forms 1, 3, 5) as PDF and DOCX.
+\end{points}
+\gap
+
+\entry{Octanet Services Pvt Ltd -- Web Development Intern}{May 2024 -- Jun 2024}
+\begin{points}
+  \item Built responsive web applications using HTML, CSS, and JavaScript following mobile-first design principles.
+\end{points}
+
+\section{Projects}
+
+\privateproject{Distributed Observability Pipeline (Datadog-style)}{datadog}
+\stack{Go, Rust, Apache Kafka, ClickHouse, Prometheus, Grafana, Kubernetes, Helm, Terraform}
+\begin{points}
+  \item Built a streaming metrics pipeline: a Go (Gin) ingestor publishing validated metrics to Kafka, consumed by a Rust/tokio processor running EWMA and Z-score anomaly detection into ClickHouse.
+  \item Ensured at-least-once delivery by committing offsets only after successful writes; added a circuit breaker, per-tenant rate limiting, and SLO burn-rate alerts. 53 unit and 25 integration tests.
+\end{points}
+\gap
+
+\privateproject{PharmaTrace -- Pharmaceutical Verification Platform}{pharma_trace}
+\stack{Python, FastAPI, LangGraph, Pydantic, React 19 PWA, Supabase PostgreSQL/PostGIS}
+\begin{points}
+  \item Built a 6-agent LangGraph pipeline over 3 drug registries (OpenFDA, RxNav, CDSCO) behind a FastAPI service, parallelizing lookups with \texttt{asyncio.gather} under strict Pydantic schemas.
+  \item Shipped an offline-first React PWA with in-browser OCR, IndexedDB caching, four-language voice input, and a SHA-256 hash-chained audit log.
+\end{points}
+\gap
+
+\project{CollegeFind -- College Discovery Platform}{collegefind}
+\stack{Next.js 16, TypeScript, Tailwind CSS, NextAuth, Prisma, Neon PostgreSQL \enspace|\enspace Live: \live{college-discovery-zeta.vercel.app}}
+\begin{points}
+  \item Shipped a live platform covering 200+ colleges: debounced search, multi-facet filters, shareable URL state, comparison across 11+ metrics, and an exam-rank admission predictor.
+\end{points}
+\gap
+
+\privateproject{DevSync -- Collaborative Developer Workspace}{devsync}
+\stack{Node.js, Express, TypeScript, Next.js, React, PostgreSQL, Prisma, Socket.io}
+\begin{points}
+  \item Built a real-time collaboration platform with JWT auth, RBAC, Socket.io live co-editing, and Kanban tasks over Prisma/PostgreSQL, with Zod validation and Jest/Supertest suites.
+\end{points}
+
+\section{Technical Skills}
+{\small
+\textbf{Languages:} Python, TypeScript, JavaScript, Go, Rust, Java, SQL, HTML, CSS\\
+\textbf{AI \& ML:} LLMs, Agentic AI, RAG, Prompt Engineering, LangGraph, LangChain, CrewAI, PyTorch, OCR, NLP, Computer Vision\\
+\textbf{Backend \& Web:} FastAPI, Node.js, Express, Gin, React, Next.js, Streamlit, Prisma, Socket.io, REST APIs, gRPC, JWT, RBAC, Pydantic, Zod\\
+\textbf{Databases:} PostgreSQL, ClickHouse, MongoDB, Supabase/PostGIS, Redis, ChromaDB, FAISS, Snowflake\\
+\textbf{Infrastructure \& Testing:} Docker, Kubernetes, Helm, Terraform, Kafka, Prometheus, Grafana, Git, CI/CD, Cloudflare, Azure, Jest, Supertest, pytest\\
+\textbf{Foundations:} Data Structures \& Algorithms, DBMS, Operating Systems, Computer Networks, OOP, System Design}
+
+\section{Achievements \& Certifications}
+\begin{points}
+  \item \ieeepaper
+  \item \textbf{Completed Amazon ML Summer School 2026} (Amazon)
+\end{points}
+\vspace{2pt}
+{\small\textbf{Certifications:} Azure AI Engineer Associate, AI-102 (Microsoft) $\cdot$ SQL AI Developer Associate, DP-800 (Microsoft) $\cdot$ SnowPro Associate: Platform (Snowflake) $\cdot$ Agentforce Specialist (Salesforce) $\cdot$ Redis Associate Developer $\cdot$ LLM Security Professional, CLLMSP $\cdot$ Google Cybersecurity Professional}
+
+\end{document}

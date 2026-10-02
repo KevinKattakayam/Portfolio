@@ -1,0 +1,39 @@
+In [PharmaTrace](https://github.com/KevinKattakayam/pharma_trace), six LangGraph agents check a medicine against OpenFDA, RxNav and India's CDSCO registry, then a report agent explains the result in plain language.
+
+The report agent is where things can go wrong. Large language models are fluent, and in medicine fluency is a hazard: a confident, plausible, invented term looks exactly like a real one.
+
+## Prompts are requests, not guarantees
+
+The first instinct is to write a stronger prompt: _only use terminology from the provided data._ That helps, but it's still a request. If the model ignores it one time in a hundred, a health tool can't ship that.
+
+So the rule moved from the prompt into the schema.
+
+## Validate the output like any other untrusted input
+
+Every agent returns a Pydantic model, and the report model has field validators that check clinical terms against the vocabulary that came back from the registries. A simplified version of the idea:
+
+```python
+class SafetyReport(BaseModel):
+    summary: str
+    warnings: list[Warning]
+
+    @field_validator("warnings")
+    @classmethod
+    def terms_must_be_grounded(cls, warnings, info):
+        allowed = info.context["allowed_terms"]  # from RxNorm / FAERS lookups
+        for w in warnings:
+            unknown = extract_clinical_terms(w.text) - allowed
+            if unknown:
+                raise ValueError(f"ungrounded terms: {sorted(unknown)}")
+        return warnings
+```
+
+A response that fails validation never reaches the user. The model can be asked again with the error as feedback, or the app can show the structured registry data without the prose. Either way, the user gets less polish, never fabricated medicine.
+
+## Context makes warnings useful
+
+Grounding stops invention. It doesn't make answers relevant. The second change was injecting patient context (age, weight and renal function) into the safety agent's prompt, so dosage warnings fire when they apply to _this_ person, sorted by severity.
+
+## What I took from it
+
+Treat model output the way you'd treat a form submission from the internet. Validate it against a schema, reject what you can't verify, and design the fallback before you need it.

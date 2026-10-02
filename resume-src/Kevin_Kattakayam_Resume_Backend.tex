@@ -1,0 +1,108 @@
+%========== BACKEND / DISTRIBUTED SYSTEMS ENGINEER - 1 page ==========
+% Compile: pdflatex Kevin_Kattakayam_Resume_Backend.tex   (run twice)
+% Requires kevinresume.sty in the same folder.
+%
+% Use this for: Backend Engineer, Platform / Infrastructure Engineer,
+% Distributed Systems, SRE, Data Engineering.
+%
+% Certifications here are the data + infra ones. The agentic-AI and
+% web credentials sit on the AI/ML and Full Stack variants instead.
+%=====================================================================
+\documentclass[a4paper,10pt]{article}
+\usepackage{kevinresume}
+\tight
+
+\begin{document}
+
+\makeheader{Backend \& Distributed Systems Engineer \enspace|\enspace Go, Rust, Kafka, Kubernetes \enspace|\enspace Internship \& Full-Time \enspace|\enspace Graduating 2027}
+
+\section{Education}
+\entry{Karunya Institute of Technology and Sciences}{2023 -- 2027 (Expected)}
+\subentry{B.Tech, Computer Science and Engineering (AI \& ML) -- CGPA: 8.39/10}{Coimbatore, India}
+\eduschool
+
+\section{Experience}
+
+\entry{TheAiSignal -- Full Stack AI Developer Intern}{May 2026 -- Jul 2026}
+\begin{points}
+  \item Built and shipped FastAPI backend services and REST API layers powering production application features.
+  \item Maintained deployment pipelines and release workflows across multiple projects using GitHub and Cloudflare.
+\end{points}
+\gap
+
+\entry{Karunya Computer Technology Centre -- Generative AI Trainee}{Dec 2024 -- Present}
+\begin{points}
+  \item Build LLM-powered applications with a team across multiple generative AI projects using LangChain, ChromaDB, and FAISS.
+  \item Apply retrieval-augmented generation, prompt engineering, and OCR-based extraction to document processing workflows.
+\end{points}
+\gap
+
+\entry{YoungMinds Technology Solutions Pvt Ltd -- Generative AI Intern}{May 2025 -- Jul 2025}
+\begin{points}
+  \item Developed automation tools in Python against LLM and REST APIs.
+\end{points}
+\gap
+
+\entry{Karunya Innovation and Design Studio (KIDS) -- Generative AI Intern}{May 2025 -- Jun 2025}
+\begin{points}
+  \item Built a multi-agent patent drafting system in CrewAI, orchestrating 5 agents for prior-art search, claim generation, and IPO compliance checking.
+\end{points}
+\gap
+
+\entry{Octanet Services Pvt Ltd -- Web Development Intern}{May 2024 -- Jun 2024}
+\begin{points}
+  \item Built responsive web applications using HTML, CSS, and JavaScript following mobile-first design principles.
+\end{points}
+
+\section{Projects}
+
+\privateproject{Distributed Observability Pipeline (Datadog-style)}{datadog}
+\stack{Go, Rust, Apache Kafka, ClickHouse, Prometheus, Grafana, Kubernetes, Terraform}
+\begin{points}
+  \item Built an end-to-end metrics pipeline: a Go HTTP ingestor (Gin) publishing validated metrics to 6-partition Kafka topics with a dead-letter queue, consumed by a Rust/tokio processor running EWMA and rolling Z-score anomaly detection.
+  \item Ensured at-least-once delivery by committing Kafka offsets only after successful ClickHouse writes, and added a circuit breaker (opens after 5 failures, backoff to 60s) so backend degradation bounds consumer lag.
+  \item Built the operational layer: per-tenant rate limiting, W3C Trace Context propagation to Jaeger, multi-window SLO burn-rate alerts, a 12-component Helm chart with HPAs and PDBs, and a Terraform blueprint for AWS EKS.
+  \item Backed it with 53 unit tests, 25 integration tests, and a k6 load-test script for the 14-container stack.
+\end{points}
+\gap
+
+\privateproject{DevSync -- Collaborative Developer Workspace}{devsync}
+\stack{Node.js, Express, TypeScript, PostgreSQL, Prisma, Socket.io, Next.js}
+\begin{points}
+  \item Built a real-time collaboration backend: JWT auth, RBAC, Socket.io document co-editing, and Kanban tasks over Prisma/PostgreSQL.
+  \item Added Zod validation, centralized error handling, and Jest/Supertest suites across auth, RBAC, and task workflows.
+\end{points}
+\gap
+
+\privateproject{PharmaTrace -- Pharmaceutical Verification Platform}{pharma_trace}
+\stack{Python, FastAPI, LangGraph, Pydantic, Supabase PostgreSQL/PostGIS}
+\begin{points}
+  \item Built a FastAPI service running a 6-agent LangGraph pipeline over OpenFDA, RxNav, and CDSCO with parallel \texttt{asyncio.gather} lookups.
+  \item Enforced strict Pydantic schemas, logged verifications to a SHA-256 hash-chained audit log, and stored geospatial data in PostGIS.
+\end{points}
+\gap
+
+\project{NexusBank -- Online Banking API}{online_bank_simulation}
+\stack{Node.js, Express 5, MongoDB, Mongoose, bcrypt, express-session}
+\begin{points}
+  \item Built a transactional banking API with bcrypt-hashed PIN auth, MongoDB-backed sessions, balance-validated transfers, compound-indexed paginated history, and rule-based fraud scoring over aggregation pipelines.
+\end{points}
+
+\section{Technical Skills}
+{\small
+\textbf{Languages:} Go, Rust, Python, TypeScript, JavaScript, Java, SQL\\
+\textbf{Backend:} FastAPI, Node.js, Express, Gin, gRPC, REST APIs, Prisma, Mongoose, Socket.io, JWT, RBAC, Pydantic, Zod\\
+\textbf{Distributed Systems:} Apache Kafka (KRaft), Schema Registry, Kafka Connect, at-least-once delivery, circuit breakers, rate limiting\\
+\textbf{Data Stores:} PostgreSQL, ClickHouse, MongoDB, Redis, Snowflake, ChromaDB, FAISS\\
+\textbf{Infra \& Observability:} Docker, Kubernetes, Helm, Terraform, Prometheus, Grafana, OpenTelemetry, Jaeger, CI/CD, Cloudflare, k6\\
+\textbf{Foundations:} Data Structures \& Algorithms, System Design, Concurrency, Distributed Tracing, SLOs}
+
+\section{Achievements \& Certifications}
+\begin{points}
+  \item \ieeepaper
+  \item \textbf{Completed Amazon ML Summer School 2026} (Amazon)
+\end{points}
+\vspace{2pt}
+{\small\textbf{Certifications:} SnowPro Associate: Platform (Snowflake) $\cdot$ Redis Associate Developer $\cdot$ SQL AI Developer Associate, DP-800 (Microsoft) $\cdot$ Azure AI Engineer Associate, AI-102 (Microsoft) $\cdot$ Google Cybersecurity Professional $\cdot$ LLM Security Professional, CLLMSP}
+
+\end{document}

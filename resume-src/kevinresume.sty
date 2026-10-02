@@ -1,0 +1,158 @@
+%==========================================================
+% kevinresume.sty - shared ATS-safe style for all variants
+%
+% Keep this file in the SAME FOLDER as the .tex files.
+% On Overleaf: upload it alongside them, no extra config needed.
+%
+% ATS RULES BAKED IN (do not undo these):
+%   1. Single column. No tabular / multicol anywhere.
+%   2. \pagestyle{empty} - no header, no footer, no page number.
+%      (A footer is what produced "Page 1GhostWorker" in the old CV.)
+%   3. Links render as visible text, never as a bare word like "GitHub".
+%   4. Plain ASCII hyphens in codes (AI-102, DP-800).
+%   5. Standard section names only.
+%   6. On any \hfill line, keep the LEFT text short enough that a real
+%      gap survives, or the text extractor glues left to right.
+%==========================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kevinresume}[2026/09/30 ATS-safe resume style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{mathptmx}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{geometry}
+\RequirePackage{microtype}
+\hypersetup{pdfauthor={Kevin Kattakayam},pdftitle={Kevin Kattakayam - Resume},pdfsubject={Resume},pdfkeywords={Software Engineer, AI, Machine Learning, Backend, Full Stack}}
+\RequirePackage{needspace}   % keeps a project/job heading together with its first bullets
+\RequirePackage[strings]{underscore}  % lets repo slugs like pharma_trace be typed literally
+
+\pagestyle{empty}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% ---------- Section styling ----------
+\titleformat{\section}
+  {\normalsize\bfseries\uppercase}
+  {}{0em}{}
+  [\vspace{-6pt}\rule{\textwidth}{0.6pt}]
+
+% ---------- Personal details (single source of truth) ----------
+\newcommand{\kname}{Kevin Kattakayam}
+\newcommand{\kphone}{+91-9778371627}
+\newcommand{\kemail}{kevinbastin369@gmail.com}
+\newcommand{\kgh}{KevinKattakayam}
+\newcommand{\kli}{kevin-kattakayam-6805a3290}
+\newcommand{\kloc}{Coimbatore, India}
+
+% Repo link: \repo{devsync} -> visible github.com/KevinKattakayam/devsync
+\newcommand{\repo}[1]{\href{https://github.com/\kgh/#1}{\small github.com/\kgh/#1}}
+
+% Live demo: \live{college-discovery-zeta.vercel.app} -> visible, clickable URL
+\newcommand{\live}[1]{\href{https://#1}{#1}}
+
+% Schooling, in chronological order (Secondary first)
+\newcommand{\eduschool}{{\small\textbf{Viswajyothi CMI Public School}, Angamaly -- Secondary, CBSE (2021): 92.2\%; Higher Secondary, CBSE (2023): 86\%}\par\vspace{1pt}}
+
+% ---------------------------------------------------------------
+% IEEE PAPER - fill the conference name ONCE, here.
+% Every document picks it up automatically. Leave \kconf empty
+% until you have the exact name off the IEEE Xplore page; an
+% incomplete venue ("2026 Second IEEE International Conference")
+% reads worse to a reviewer than no venue at all.
+%
+% Example once you have it:
+%   \def\kconf{2026 2nd International Conference on
+%                       Trends in Quantum Computing and Emerging
+%                       Business Technologies (TQCEBT)}
+% ---------------------------------------------------------------
+\def\kconf{}
+
+\newcommand{\ieeelink}{\href{https://ieeexplore.ieee.org/document/11469562}{ieeexplore.ieee.org/document/11469562}}
+
+% Renders the full citation, with or without the venue.
+\newcommand{\ieeepaper}{%
+  \textbf{IEEE Publication (2026):} ``Early Lung Cancer and Heart Disease
+  Prediction from Clubbed Fingers Using Machine Vision''%
+  \ifx\kconf\empty\else, \kconf\fi. \ieeelink}
+
+% ---------- Header ----------
+% #1 = the one-line role tagline under the name
+\newcommand{\makeheader}[1]{%
+\begin{center}
+  {\LARGE\bfseries \kname}\\[3pt]
+  {\small #1}\\[3pt]
+  {\small \kloc \enspace|\enspace \kphone \enspace|\enspace
+   \href{mailto:\kemail}{\kemail}}\\[2pt]
+  {\small \href{https://github.com/\kgh}{github.com/\kgh} \enspace|\enspace
+   \href{https://www.linkedin.com/in/\kli/}{linkedin.com/in/\kli}}
+\end{center}
+\vspace{2pt}}
+
+% ---------- Entry macros ----------
+\newcommand{\entry}[2]{%
+  \needspace{4\baselineskip}%
+  \textbf{#1}\hfill{\small\textit{#2}}\par\vspace{1pt}}
+
+\newcommand{\subentry}[2]{%
+  {\small\textit{#1}}\hfill{\small\textit{#2}}\par\vspace{1pt}}
+
+% Project heading: name left, clickable visible repo URL right
+\newcommand{\project}[2]{%
+  \needspace{5\baselineskip}%
+  \textbf{#1}\hfill\repo{#2}\par\vspace{1pt}}
+
+% ---------------------------------------------------------------
+% REPO-LINK SWITCH  <<< CURRENTLY ON >>>
+%
+% Every project now prints its GitHub URL, including these five, which
+% returned 404 when last checked on 30 Sep 2026:
+%     datadog, pharma_trace, devsync, schamroth, Patent_Doc_Copilot
+%
+% >>> BEFORE YOU SEND ANY OF THESE PDFs: open each of those five URLs
+% >>> in a private/incognito window. If one still 404s, that is a dead
+% >>> link on your resume, which is worse than no link at all.
+%
+% These five were already public and need no action:
+%     pdf-ocr, bill_excel, finetunevjpea, online_bank_simulation,
+%     collegefind
+%
+% To hide the unverified links again, change \showprivatetrue back to
+% \showprivatefalse on the line below and recompile.
+% ---------------------------------------------------------------
+\newif\ifshowprivate
+\showprivatetrue
+
+\newcommand{\privateproject}[2]{%
+  \needspace{5\baselineskip}%
+  \textbf{#1}\ifshowprivate\hfill\repo{#2}\fi\par\vspace{1pt}}
+
+% Same as \privateproject, but the repo slug is inlined in a bullet
+% list rather than a heading: \privaterepo{devsync}
+\newcommand{\privaterepo}[1]{\ifshowprivate\ (\repo{#1})\fi}
+
+\newcommand{\stack}[1]{%
+  {\small\textit{#1}}\par\vspace{1pt}}
+
+% ---------- Bullets ----------
+\newlist{points}{itemize}{1}
+\setlist[points]{label=\textbullet, leftmargin=3.4mm, labelsep=1.7mm,
+                 topsep=0.8pt, itemsep=0.5pt, parsep=0pt, partopsep=0pt,
+                 before=\small}
+
+% ---------- Density presets ----------
+% \tight  = one-page resumes   \roomy = two-page CV
+\newcommand{\tight}{%
+  \geometry{left=1.2cm, right=1.2cm, top=0.7cm, bottom=0.55cm}%
+  \titlespacing{\section}{0pt}{4pt}{2.5pt}%
+  \newcommand{\gap}{\vspace{3pt}}}
+
+\newcommand{\roomy}{%
+  \geometry{left=1.22cm, right=1.22cm, top=0.72cm, bottom=0.6cm}%
+  \titlespacing{\section}{0pt}{4.5pt}{2.5pt}%
+  \newcommand{\gap}{\vspace{4pt}}}
+
+\endinput

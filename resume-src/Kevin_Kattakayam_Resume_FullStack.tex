@@ -1,0 +1,107 @@
+%========== FULL STACK / SOFTWARE ENGINEER - 1 page ==========
+% Compile: pdflatex Kevin_Kattakayam_Resume_FullStack.tex   (run twice)
+% Requires kevinresume.sty in the same folder.
+%
+% Use this for: Full Stack Engineer, Software Engineer (product),
+% Frontend-leaning SDE, SDE-1 / new-grad generalist roles.
+%
+% This is the only variant that keeps the ICT Academy - Infosys Python
+% Web Developer credential, because it is web-specific and the Infosys
+% name is recognised by Indian recruiters. It is dropped elsewhere.
+%=============================================================
+\documentclass[a4paper,10pt]{article}
+\usepackage{kevinresume}
+\tight
+
+\begin{document}
+
+\makeheader{Full Stack Software Engineer \enspace|\enspace TypeScript, React/Next.js, Node.js, PostgreSQL \enspace|\enspace Internship \& Full-Time \enspace|\enspace Graduating 2027}
+
+\section{Education}
+\entry{Karunya Institute of Technology and Sciences}{2023 -- 2027 (Expected)}
+\subentry{B.Tech, Computer Science and Engineering (AI \& ML) -- CGPA: 8.39/10}{Coimbatore, India}
+\eduschool
+
+\section{Experience}
+
+\entry{TheAiSignal -- Full Stack AI Developer Intern}{May 2026 -- Jul 2026}
+\begin{points}
+  \item Engineered features end to end across a React frontend, FastAPI backend, and REST API layer for production applications.
+  \item Maintained deployment pipelines and release workflows across multiple projects using GitHub and Cloudflare.
+\end{points}
+\gap
+
+\entry{Karunya Computer Technology Centre -- Generative AI Trainee}{Dec 2024 -- Present}
+\begin{points}
+  \item Build LLM-powered applications with a team across multiple generative AI projects using LangChain, ChromaDB, and FAISS.
+  \item Apply retrieval-augmented generation, prompt engineering, and OCR-based extraction to document processing workflows.
+\end{points}
+\gap
+
+\entry{YoungMinds Technology Solutions Pvt Ltd -- Generative AI Intern}{May 2025 -- Jul 2025}
+\begin{points}
+  \item Developed generative AI applications and automation tools in Python against LLM and REST APIs.
+\end{points}
+\gap
+
+\entry{Karunya Innovation and Design Studio (KIDS) -- Generative AI Intern}{May 2025 -- Jun 2025}
+\begin{points}
+  \item Built a multi-agent patent drafting application in CrewAI with a 5-agent pipeline and an interactive Streamlit interface.
+\end{points}
+\gap
+
+\entry{Octanet Services Pvt Ltd -- Web Development Intern}{May 2024 -- Jun 2024}
+\begin{points}
+  \item Built responsive web applications using HTML, CSS, and JavaScript following mobile-first design principles.
+\end{points}
+
+\section{Projects}
+
+\project{CollegeFind -- College Discovery Platform}{collegefind}
+\stack{Next.js 16, TypeScript, Tailwind CSS, NextAuth, Prisma, Neon PostgreSQL \enspace|\enspace Live: \live{college-discovery-zeta.vercel.app}}
+\begin{points}
+  \item Shipped a live product covering 200+ colleges with debounced search, multi-facet filters, shareable URL state, and skeleton loaders.
+  \item Built side-by-side comparison across 11+ metrics, an exam-rank admission predictor, bookmarking, and a community Q\&A thread with optimistic UI, deployed as a Vercel frontend proxying to a Render backend over serverless Neon Postgres.
+\end{points}
+\gap
+
+\privateproject{DevSync -- Collaborative Developer Workspace}{devsync}
+\stack{Node.js, Express, TypeScript, Next.js, React, PostgreSQL, Prisma, Socket.io}
+\begin{points}
+  \item Built a real-time collaboration platform with JWT authentication, role-based access control, Socket.io live document co-editing, and Kanban task management over a Prisma/PostgreSQL schema.
+  \item Hardened the API with Zod validation, centralized error handling, and Jest/Supertest integration suites covering auth, RBAC, and task workflows.
+\end{points}
+\gap
+
+\privateproject{PharmaTrace -- Pharmaceutical Verification Platform}{pharma_trace}
+\stack{React 19, Vite, FastAPI, Supabase PostgreSQL/PostGIS, Tesseract.js, Whisper, PWA}
+\begin{points}
+  \item Built an offline-first React 19 PWA with in-browser Tesseract OCR, IndexedDB caching with a Background Sync outbox, and Whisper voice input in Malayalam, Hindi, Tamil, and English.
+  \item Backed it with a FastAPI service running a 6-agent LangGraph verification pipeline over OpenFDA, RxNav, and CDSCO, with Pydantic-validated responses and a SHA-256 hash-chained audit log.
+\end{points}
+\gap
+
+\project{NexusBank -- Online Banking Simulation}{online_bank_simulation}
+\stack{Node.js, Express 5, MongoDB, Mongoose, bcrypt, express-session}
+\begin{points}
+  \item Built a full-stack banking app: bcrypt-hashed PIN auth, MongoDB-backed sessions, balance-validated transfers, paginated filterable history, and a dark-mode dashboard with live balance updates.
+\end{points}
+
+\section{Technical Skills}
+{\small
+\textbf{Languages:} TypeScript, JavaScript, Python, Java, SQL, HTML, CSS\\
+\textbf{Frontend:} React 19, Next.js (App Router), Tailwind CSS, PWA/Workbox, IndexedDB, Chart.js, Leaflet, Vite\\
+\textbf{Backend:} Node.js, Express, FastAPI, REST APIs, Prisma, Mongoose, Socket.io, NextAuth, JWT, RBAC, Zod\\
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB, Redis, Neon, Supabase, ChromaDB, FAISS\\
+\textbf{Testing, Tooling \& Cloud:} Jest, Supertest, pytest, Git, Postman, Docker, CI/CD, Vercel, Render, Railway, Cloudflare, Azure\\
+\textbf{Foundations:} Data Structures \& Algorithms, Object-Oriented Design, System Design}
+
+\section{Achievements \& Certifications}
+\begin{points}
+  \item \ieeepaper
+  \item \textbf{Completed Amazon ML Summer School 2026} (Amazon)
+\end{points}
+\vspace{2pt}
+{\small\textbf{Certifications:} Azure AI Engineer Associate, AI-102 (Microsoft) $\cdot$ SQL AI Developer Associate, DP-800 (Microsoft) $\cdot$ Redis Associate Developer $\cdot$ Python Web Developer (ICT Academy -- Infosys) $\cdot$ Google Cybersecurity Professional}
+
+\end{document}
