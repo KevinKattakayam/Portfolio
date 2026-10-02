@@ -7,7 +7,7 @@ export const site = {
   shortName: "Kevin",
   initials: "KK",
   // Used for canonical URLs, Open Graph, sitemap and JSON-LD. Update after deploying.
-  url: "https://kevinbastin.netlify.app",
+  url: "https://kevinkattakayam.dev",
   role: "Software engineer",
   // Rotating text in the hero. Each maps to one of the resume variants below.
   roles: ["AI engineer", "backend engineer", "full-stack engineer", "ML researcher"],

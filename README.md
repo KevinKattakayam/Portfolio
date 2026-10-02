@@ -53,15 +53,13 @@ To receive messages directly in your inbox (free, optional):
 
 The build output is plain files in `/out`, so any static host works. First, set `site.url` in `src/data/site.ts` to your final URL (used for SEO, the sitemap and social cards).
 
-**Netlify** (your current host): push to GitHub, then "Add new site → Import from Git". `netlify.toml` already sets the build command and the `out` folder. To keep the `kevinbastin.netlify.app` address, connect the repo to your existing site under Site configuration → Build & deploy.
+**Netlify** (your current host): push to GitHub, then "Add new site → Import from Git". `netlify.toml` already sets the build command and the `out` folder. To keep your Netlify address, connect the repo to your existing site under Site configuration → Build & deploy.
 
 **Vercel:** import the repo at vercel.com/new. It detects Next.js and the static export automatically. No settings to change.
 
-**GitHub Pages:** push to `main`, then in the repo go to Settings → Pages → Source: "GitHub Actions". The included workflow (`.github/workflows/deploy-pages.yml`) builds and publishes with the right base path. Also set `site.url` to `https://<your-user>.github.io/<repo>` so canonical links, the sitemap and RSS point to the right place.
+**Cloudflare:** import the repo. Build command `npm run build`, deploy command `npx wrangler deploy` (reads `wrangler.jsonc`, which serves the `out` folder). If the build fails on Node, add a build variable `NODE_VERSION` = `22`.
 
-**Cloudflare Pages / Workers:**
-- **Cloudflare Pages (Recommended):** In Cloudflare Dashboard, go to **Workers & Pages → Create application → Pages → Connect to Git**. Set Build command to `npm run build` and **Build output directory** to `out`.
-- **Cloudflare Workers (Wrangler):** `wrangler.json` is already configured to serve the `./out` static build directly via Cloudflare Workers Static Assets.
+**GitHub Pages:** push to `main`, then in the repo go to Settings → Pages → Source: "GitHub Actions". The included workflow (`.github/workflows/deploy-pages.yml`) builds and publishes with the right base path. Also set `site.url` to `https://<your-user>.github.io/<repo>` so canonical links, the sitemap and RSS point to the right place.
 
 ## How it's built
 
