@@ -59,6 +59,10 @@ The build output is plain files in `/out`, so any static host works. First, set 
 
 **GitHub Pages:** push to `main`, then in the repo go to Settings → Pages → Source: "GitHub Actions". The included workflow (`.github/workflows/deploy-pages.yml`) builds and publishes with the right base path. Also set `site.url` to `https://<your-user>.github.io/<repo>` so canonical links, the sitemap and RSS point to the right place.
 
+**Cloudflare Pages / Workers:**
+- **Cloudflare Pages (Recommended):** In Cloudflare Dashboard, go to **Workers & Pages → Create application → Pages → Connect to Git**. Set Build command to `npm run build` and **Build output directory** to `out`.
+- **Cloudflare Workers (Wrangler):** `wrangler.json` is already configured to serve the `./out` static build directly via Cloudflare Workers Static Assets.
+
 ## How it's built
 
 - Next.js 16 (App Router, static export), React 19, TypeScript
