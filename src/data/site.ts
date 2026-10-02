@@ -31,7 +31,7 @@ export const site = {
    * Public repos that should never appear in the live "Recently on GitHub" list.
    * Names are matched case-insensitively. Add any repo name here to hide it.
    */
-  hiddenRepos: ["varco-coverage-not-lexicons", "Kevinbastin", "KevinKattakayam"],
+  hiddenRepos: ["varco-coverage-not-lexicons", "Kevinbastin", "KevinKattakayam","Portfolio"],
   // Put your photo at /public/images/kevin.jpg (the one from your old site works).
   // If the file is missing, a monogram is shown instead.
   photo: "/images/kevin.jpg",
